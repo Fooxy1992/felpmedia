@@ -5,6 +5,7 @@ import {
   PenTool,
   Database
 } from "lucide-react";
+import ContactForm from '../components/ContactForm';
 
 export default function Page() {
   return (
@@ -237,46 +238,10 @@ export default function Page() {
             Ready to build something extraordinary? Let's discuss your technical requirements.
           </p>
           
-          <form className="space-y-4">
-            <div>
-              <label className="block text-[11px] font-bold text-white uppercase tracking-wider mb-2 font-mono">
-                Name
-              </label>
-              <input
-                className="w-full bg-[#050505] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:border-[#a078ff] focus:ring-1 focus:ring-[#a078ff]/30 focus:outline-none transition-all text-[14px]"
-                type="text"
-                placeholder="John Doe"
-              />
-            </div>
-            <div>
-              <label className="block text-[11px] font-bold text-white uppercase tracking-wider mb-2 font-mono">
-                Email
-              </label>
-              <input
-                className="w-full bg-[#050505] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:border-[#a078ff] focus:ring-1 focus:ring-[#a078ff]/30 focus:outline-none transition-all text-[14px]"
-                type="email"
-                placeholder="john@example.com"
-              />
-            </div>
-            <div>
-              <label className="block text-[11px] font-bold text-white uppercase tracking-wider mb-2 font-mono">
-                Project Scope
-              </label>
-              <textarea
-                className="w-full bg-[#050505] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:border-[#a078ff] focus:ring-1 focus:ring-[#a078ff]/30 focus:outline-none transition-all text-[14px] resize-none"
-                rows={4}
-                placeholder="Describe your technical needs..."
-              ></textarea>
-            </div>
-            <div className="pt-2">
-                <button
-                className="w-full py-3.5 bg-[#8B5CF6] text-white rounded-lg text-[12px] font-bold tracking-wider hover:brightness-110 transition-colors uppercase"
-                type="button"
-                >
-                Submit Request
-                </button>
-            </div>
-          </form>
+          {/* Contact form posts leads to CRM API */}
+          <div className="max-w-xl">
+            <ContactForm />
+          </div>
         </section>
       </main>
 
