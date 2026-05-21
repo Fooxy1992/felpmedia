@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { addLead, getLeads } from '../../../lib/crm';
 
 export async function GET() {
@@ -6,7 +6,7 @@ export async function GET() {
   return NextResponse.json({ data: all });
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const lead = addLead({

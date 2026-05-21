@@ -1,12 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getLeadById } from '../../../../lib/crm';
-import { getLeads } from '../../../../lib/crm';
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, context: { params: Promise<{ id: string | string[] | undefined }> }) {
   try {
     const body = await req.json();
+    const params = await context.params;
     const id = params.id;
-    const lead = getLeadById(id);
+    const lead = getLeadById(String(id));
     if (!lead) return NextResponse.json({ ok: false, error: 'Not found' }, { status: 404 });
 
     // Minimal patch: update status, priority, assignedTo
