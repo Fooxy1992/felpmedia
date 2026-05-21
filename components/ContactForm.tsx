@@ -22,7 +22,7 @@ export default function ContactForm({ variant }: { variant?: string }) {
           email,
           phone,
           message,
-          sourcePage: window.location.pathname,
+          sourcePage: typeof window !== 'undefined' ? window.location.pathname : '/',
           service: variant || 'General Inquiry',
         }),
       });

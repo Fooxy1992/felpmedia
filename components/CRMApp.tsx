@@ -11,18 +11,20 @@ export default function CRMApp() {
   useEffect(() => {
     fetch('/api/leads').then((r) => r.json()).then((j) => setLeads(j.data || []));
 
-    const es = new EventSource('/api/realtime');
-    es.onmessage = (e) => {
-      try {
-        const data = JSON.parse(e.data);
-        if (data.type === 'lead_created') {
-          setLeads((s) => [data.lead, ...s]);
+    if (typeof window !== 'undefined' && typeof EventSource !== 'undefined') {
+      const es = new EventSource('/api/realtime');
+      es.onmessage = (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          if (data.type === 'lead_created') {
+            setLeads((s) => [data.lead, ...s]);
+          }
+        } catch (err) {
+          // ignore pings
         }
-      } catch (err) {
-        // ignore pings
-      }
-    };
-    return () => es.close();
+      };
+      return () => es.close();
+    }
   }, []);
 
   function open(lead: Lead) {
