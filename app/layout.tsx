@@ -15,9 +15,6 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Modern Digital Solutions | Freelance Developer',
   description: 'High-performance web applications, automated workflows, and premium digital experiences.',
-  icons: {
-    icon: '/favicon.svg',
-  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
